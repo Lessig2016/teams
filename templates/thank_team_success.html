@@ -1,0 +1,15 @@
+{% extends "includes/base.html" %}
+{% block body %}
+<!--   <div class="page-header">
+  </div> -->
+  <div class="page-body">
+    <h4>Your message was successfully sent to <strong>{{num_emailed}}</strong> 
+    {% if total_pledges %}
+        out of <strong>{{total_pledges}}</strong> total 
+    {% endif %}
+        contributors.
+    </h4>
+
+    <a href="{{team_url}}">Return to team page</a>
+  </div>
+{% endblock %}

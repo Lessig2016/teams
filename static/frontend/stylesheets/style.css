@@ -1,0 +1,879 @@
+/* common styles for all MayDayPAC modules */
+
+/*By default, grid.css, which is part of Twitter Bootstrap, decorates the divs and makes it obvious where the boundaries are.  This code resets borders and background colors to their defaults.*/
+
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9 {
+    background-color: transparent;
+    border: none;
+    padding:0;
+    margin:0;
+}
+
+.row,
+.row-fluid {
+    background-color: transparent;
+    border: none;
+    padding:0;
+    margin:0;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.61em;
+}
+
+/*Bootstrapper only reaches 960px, so we need to wrap our rows in yet another div - one that reaches the full width of the page*/
+
+body {
+    font-family: "Merriweather",Georgia,"Times New Roman",Times,serif;
+}
+body, html {
+  height: auto;
+  background: #c6c8ca;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Top menu */
+
+.menu-row {
+    margin: 0;
+    padding: 0;
+}
+
+.topmenu {
+    color: white;
+    font-size: 15px;
+    background-color: #003366;
+    text-align: center;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: right;
+}
+
+.topmenu:hover {
+    background-color: #004477;
+    color: white;
+}
+
+
+.topmenu_red {
+    color: white;
+    font-size: 15px;
+    background-color: #800000;
+    text-align: center;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: right;
+}
+.topmenu_red:hover{
+background-color: #9e0b0f;
+}
+
+@media only screen and (max-width: 991px) {
+    .topmenu {
+        padding: 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .topmenu {
+        clear: both;
+        width: 100%;
+        border-top: 1px solid #00254B;
+    }
+}
+
+
+/* Logo row */
+
+.logo-row {
+    position:relative;
+    padding-top: 0;
+    margin-bottom: -10px;
+	margin-top:10px;
+	text-align:left;
+	top:-30px;
+	z-index:-20;
+    max-width: 310px;
+}
+.logo-row a {
+    display: block;
+    cursor: pointer;
+}
+.logo-row img{
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .logo-row {
+    	text-align:center;
+    	top: 0;
+        margin: 20px auto;
+    }
+
+    .logo-row a {
+        width: 66%;
+        margin: 0 auto;
+    }
+}
+
+
+.subhead {
+    color: #999999;
+    font-size: 22px;
+}
+/*END OF THE COMMON HEAD AREA*/
+
+/* END OF THE COMMON HEAD AREA */
+
+
+/* Hero Text Row */
+
+.herotext-row {
+}
+
+.herotext {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/*Hero Area*/
+
+
+.slideroption img {
+  width: 100%;
+  opacity: 0;
+  transition: 600ms opacity;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.slideroption img.active {
+  opacity: 1;
+}
+
+
+.hero-fw{
+  position:relative;
+  background-image:url('../../../images/05-midwest.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  border-bottom:4px solid white;
+}
+.underlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  overflow:hidden;
+}
+.underlay img{
+  width:100%;
+  height:100%;
+}
+
+.heroarea {
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:50px;
+  padding-bottom:50px;
+
+}
+
+.video {
+  margin-top:40px;
+  margin-bottom:40px;
+  margin-left:20px;
+  margin-right:20px;
+  height:300px;
+  border: 3px solid white;
+}
+
+.pledgebutton{
+  background-color: #9e0b0f;
+  color: #ffffcc;
+  margin-left:auto;
+  margin-right:auto;
+  margin:10px 50px;
+  padding:10px 20px;
+  text-align: center;
+  font-size:50px;
+  border: 3px solid white;
+  z-index:20;
+}
+
+.pledgebutton:hover{
+  z-index:20;
+  box-shadow: 0px 0px 10px #fff;
+  text-shadow: 0px 0px 5px #fff;
+  text-decoration:none;
+}
+
+.checkpoint-text{
+  color:white;
+  text-align:center;
+}
+#complete-total-raised {
+  color:white;
+  text-align:center;
+}
+
+.progress-container {
+  margin-top:30px;
+}
+
+.progbar {
+  margin-top:40px;
+  margin-bottom:40px;
+  margin-left:20px;
+  margin-right:20px;
+  padding:30px;
+  height:300px;
+  background-color: rgba(0, 51, 102, 0.7); /*blue transparency*/
+  border: 3px solid white;
+}
+
+/*Fancy Progress Bar Stuff*/
+
+.donation-progress-bar {
+  background: #838383;
+  border-radius: 26px;
+  width: 100%;
+  height: 26px;
+  padding: 0 25px;
+  position: relative;
+}
+
+.donation-progress-bar > span {
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 26px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  width: 33%;
+  float: left;
+}
+
+.donation-progress-bar.endless > span {
+  width: 50%;
+}
+
+.donation-progress-bar.endless em {
+  font-style: normal;
+}
+
+.donation-progress-bar .donation-progress-funded {
+  text-align: center;
+}
+
+.donation-progress-bar .donation-progress-togo,
+.donation-progress-bar.endless .donation-progress-funded {
+  text-align: right;
+}
+
+.donation-progress {
+  width: 200px;
+  height: 26px;
+  border-radius: 26px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+
+  -webkit-background-size: 26px 26px;
+  -moz-background-size:    26px 26px;
+  -o-background-size:      26px 26px;
+  background-size:         26px 26px;
+
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+  -moz-animation:    progress-bar-stripes 1s linear infinite;
+  animation:         progress-bar-stripes 1s linear infinite;
+}
+.donation-progress {
+  background-color: #990000;
+}
+
+.donation-progress.gone {
+  background-color: #57ad68;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 26px 0; }
+  to    { background-position: 0 0; }
+}
+
+@-moz-keyframes progress-bar-stripes {
+  from  { background-position: 26px 0; }
+  to    { background-position: 0 0; }
+}
+
+@keyframes progress-bar-stripes {
+  from  { background-position: 26px 0; }
+  to    { background-position: 0 0; }
+}
+
+/*END Fancy Progress Bar Stuff*/
+
+/*Share Options*/
+.donation-share{
+  text-align:center;
+}
+
+.donation-share-text {
+  color:white;
+  text-align:center;
+  font-size:28px;
+  font-style:italic;
+}
+.donation-share-text a{
+  color:white;
+}
+.donation-share-text a:hover{
+  text-shadow: 0px 0px 8px #66ccff, 0px 0px 13px #66ccff ;
+  text-decoration:none;
+}
+
+.socialmenu{
+  background-color:black;
+}
+
+.sign-up {
+  color:white;
+  text-align:center;
+  font-size:16px;
+  padding:10px;
+  border: 1px solid white;
+  background-color:#000000;
+  height:50px;
+}
+
+.sign-up-pledge{
+  color:#ffffcc;
+  text-align:center;
+  font-size:24px;
+  padding:6px;
+  border: 1px solid white;
+  background-color:#FF0000;
+  height:50px;
+}
+
+.sign-up:hover {
+  background-color: #222222;
+  color:#ffffcc;
+}
+
+.arrowdown{
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid rgba(255,255,255,0.8);
+}
+
+.halfcircle{
+  position:absolute;
+  top:0;
+  margin-left:50%;
+  left:-50px;
+  z-index:4;
+  height:50px;
+  width:100px;
+}
+
+.widget1{
+  position:relative;
+  background-image:url('../../../images/dark_capitol.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  padding:40px;
+  border-bottom:4px solid white;
+}
+.widget2{
+  position:relative;
+  background-image:url('../../../images/blue_franklin.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  padding:40px;
+  border-bottom:4px solid white;
+}
+.widget3{
+  position:relative;
+  background-image:url('../../../images/green_yorktown.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:top center;
+  padding:40px;
+  border-bottom:4px solid white;
+}
+.widget4{
+  position:relative;
+  background-image:url('../../../images/naval_battle.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:bottom center;
+  padding:40px;
+  border-bottom:4px solid white;
+}
+
+.widgettext h1, .widgettext h2, .widgettext h3, .widgettext h4, .widgettext h5, .widgettext h6 {
+  color:#FFFF99;
+  text-align:center;
+  font-size:35px;
+  padding-bottom:10px;
+}
+
+.widgettext p {
+  color:white;
+  text-align:center;
+  font-size:20px;
+}
+
+.pac_disclaimer {
+  display: inline-block;
+  color:white;
+  text-align:center;
+  font-size:16px;
+  padding:10px;
+  border:2px solid white;
+  font-variant:small-caps;
+}
+
+.page-body{
+  margin-bottom: 60px;
+}
+
+.footer{
+  background-color: #333333;
+  padding:40px;
+}
+
+.footer a{
+  color:#ffffcc;
+}
+
+#main_body {
+  background: #fff;
+  margin-top:35px;
+}
+
+.copyright{
+  color:white;
+}
+
+/*Subpages*/
+
+.rally {
+  background-image:url('../../../images/subpage_background.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+
+#about .subpage-content img{
+  float:left;
+  width:150px;
+  border:solid white 1px;
+  margin:10px;
+}
+
+.subpage-content a{
+  color:#003366;
+}
+
+.subpage-content a:hover{
+  text-decoration:underline;
+  color:#003366;
+}
+
+.subpage-content {
+   color:black;
+   font-size:16px;
+   padding:20px;
+   text-align:left;
+}
+
+.subpage-content h1,
+.subpage-content h2,
+.subpage-content h3,
+.subpage-content h4,
+.subpage-content h5,
+.subpage-content h6{
+  color:#003366;
+  text-align:center;
+  font-size:30px;
+  text-align:left;
+  padding-bottom: 10px;
+  border-top: solid 1px #003366;
+  padding-top: 20px;
+}
+
+.sidebar {
+   color:white;
+   font-size:14px;
+   padding:20px;
+   text-align:left;
+   background: rgba(0,51,102,0.8);
+}
+
+.sidebar .hide-mobile,
+.sidebar .about-page-only {
+display:none;
+}
+
+.sidebar .btn-primary {
+   position:relative;
+   top:-1px;
+   padding:3px 5px;
+   margin-left:3px;
+}
+
+#about .sidebar .about-page-only{
+display:inline;
+}
+
+.sidebar  .pledgebutton {
+    margin:10px 20px;
+    padding:5px 10px;
+    text-align: center;
+    font-size:40px;
+    border: 3px solid white;
+    z-index:20;
+  }
+
+
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6{
+  color:white;
+  text-align:center;
+  font-size:30px;
+}
+
+.sidebar a{
+  color:#ffffcc;
+}
+.sidebar a:hover{
+  text-decoration:underline;
+}
+
+/* This comment reserved for someone who knows what the heck #login_modal is */
+
+#login_modal .modal-header {
+  color: black;
+}
+
+#login_modal #login_inputs {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 370px;
+  height: 70px;
+}
+
+#login_modal #login_inputs i {
+  font-size: 55px;
+}
+
+#login_modal #login_inputs > div.login-service {
+  padding-right: 20px;
+  text-align: center;
+}
+
+#login_modal #login_inputs > div.login-service:last-child {
+  padding-right: 0px;
+}
+
+/*Responsive Tweaks*/
+
+.mobileonly {
+  display:none;
+}
+
+.mobilehidden{
+  display:inline;
+}
+
+@media (max-width: 1200px) {
+  .pledgebutton{
+    margin:25px 20px;
+    padding:5px 10px;
+    text-align: center;
+    font-size:40px;
+    border: 3px solid white;
+    z-index:20;
+  }
+  .donation-progress-bar{
+    padding:0 5px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pledgebutton{
+      margin-left:auto;
+     margin-right:auto;
+     margin:10px 50px;
+     padding:10px 20px;
+     text-align: center;
+     font-size:50px;
+     border: 3px solid white;
+     z-index:20;
+  }
+  .donation-progress-bar{
+     padding:0 25px;
+  }
+}
+@media (max-width: 600px) {
+  .pledgebutton{
+     margin:25px 20px;
+     padding:5px 10px;
+     text-align: center;
+     font-size:40px;
+     border: 3px solid white;
+     z-index:20;
+  }
+  .donation-progress-bar{
+     padding:0 5px;
+  }
+}
+
+/* Contact Form */
+
+.input-group, .input-group-lg {
+   display:block;
+   width:75%;
+   margin-left: 12%;
+   margin-right: 13%;
+}
+
+.input-group-btn{
+   display:block;
+   width:75%;
+   margin-left: 12%;
+   margin-right: 13%;
+   text-align:right;
+}
+
+/* Social icons */
+
+.social-icon-scale {
+   font-size: 1.4em !important;
+}
+
+/* PLEDGE PAGE STUFF */
+
+.makebackground {
+ background-image:url('/static/pledgepage_background.jpg');
+ background-size:cover;
+}
+
+.page-header{
+  border-bottom:0;
+  padding:0;
+  margin-top:0;
+  margin-bottom: 20px;
+}
+
+.apostrophe-pp {
+  font-weight:300;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 50%;
+    padding-top: 30px; height: 0; overflow: hidden;
+    margin-top:10px;
+    margin-bottom:15px;
+    border: 15px solid rgba(255, 255, 255, 0.3);
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.teamslist {
+  margin: 0;
+  padding: 0;
+}
+ 
+.teamslist li{
+  font-size: 30px;
+  list-style-type: none;
+  padding: 3px 0;
+  margin: 0;
+  border-bottom: solid 1px #f1f1f1;
+}
+ 
+.teamslist li a {
+  width: 45%;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+}
+ 
+.teamslist li span:first-child {
+  width: 120px;
+  text-align: left;
+}
+ 
+.teamslist li span:last-child {
+  float: right;
+  font-size: 19px;
+  line-height: 35px;
+}
+ 
+.leaderboard_choice_by_what {
+  margin: 21px 0px;
+}
+ 
+ .leaderboard_choice_by_what span {
+  margin-right: 20px;
+  color: #428bca;
+  border-bottom: dashed 1px blue;
+  cursor: pointer;
+}
+ 
+ .leaderboard_choice_by_what span:hover {
+  border-bottom-style: solid;
+}
+ 
+.leaderboard_choice_by_what span.active {
+  color: black;
+  border: 0;
+  cursor: default;
+}
+ 
+p.prevnext a {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #F1F1F1;
+  border-radius: 3px;
+  margin-top: 15px;
+  font-size: 22px;
+}
+ 
+p.prevnext a.next {
+  float: right;
+}
+ 
+.teamslist li:first-child{
+  margin-top:20px;
+}
+ 
+.teamslist li:hover {
+  background: #fdfdfd;
+}
+ 
+.teamslist {
+  margin-bottom:20px;
+}
+ 
+.dashboard-intro{
+  margin-top:20px;
+  font-size:20px;
+}
+
+
+.description {
+  color:white;
+  font-weight:300;
+  padding-bottom:30px;
+}
+
+.description p{
+  color:white;
+  font-weight:300;
+}
+
+.description img{
+  float:left;
+  margin:10px;
+}
+
+
+.main-content{
+  padding-right:150px;
+}
+
+.word-note{
+  position:relative;
+  color:white;
+  font-weight:300;
+  font-size:25px;
+}
+
+.btn-cta, .btn-cta:visited {
+  background-color: #d53a38;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  display: block;
+  margin: 20px auto 0;
+  width: 270px;
+  padding: 20px;
+}
+.btn-cta:hover {
+  background: #b73230;
+  text-decoration: none;
+  color: #fff;
+}
+
+.teamslist li{
+  font-size:30px;
+}
+
+.teamslist li:first-child{
+  margin-top:20px;
+}
+
+.teamslist {
+  margin-bottom:20px;
+}
+
+.dashboard-intro{
+  margin-top:20px;
+  font-size:20px;
+}
+
+/* END PLEDGE PAGE STUFF */
+
+
+
+
+
