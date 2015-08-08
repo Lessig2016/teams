@@ -77,8 +77,8 @@ You can reach me by replying to this email.
 
 class BaseHandler(webapp2.RequestHandler):
   def dispatch(self, *args, **kwargs):
-    if self.request.host == "my.mayone.us" and self.request.method == "GET":
-      self.request.host = "my.mayday.us"
+    if self.request.host == "lessigforpresident.com" and self.request.method == "GET":
+      self.request.host = "team.lessigforpresident.com"
       return self.redirect(self.request.url)
     return webapp2.RequestHandler.dispatch(self, *args, **kwargs)
 
@@ -432,7 +432,7 @@ class ShareTeamHandler(TeamBaseHandler):
     if team is None:
       return
     else:
-      team_url = "https://my.mayday.us/t/" + team.primary_slug
+      team_url = "https://team.lessigforpresident.com/t/" + team.primary_slug
       self.render_template(
           "share_team.html", team=team, team_url=team_url)
 
