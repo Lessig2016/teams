@@ -12,16 +12,13 @@ import traceback
 import jinja2
 import markdown
 import webapp2
-import wtforms
-
-from wtforms.fields.html5 import IntegerField
-from wtforms.widgets.html5 import URLInput
 
 from google.appengine.api import memcache
 from google.appengine.api import urlfetch
-from google.appengine.ext import db
 
 import config_NOCOMMIT
+
+from util import leaderboardGetter
 
 JINJA = jinja2.Environment(
   loader=jinja2.FileSystemLoader('templates/'),
@@ -130,154 +127,6 @@ class BaseHandler(webapp2.RequestHandler):
     self.render_template("404.html")
 
 
-class Team(db.Model):
-  CURRENT_VERSION = 2
-
-  primary_slug = db.StringProperty()
-  title = db.StringProperty(required=True)
-  description = db.TextProperty(required=True)
-
-  total_people_joined = db.IntegerProperty(default=0)
-  goal_dollars = db.IntegerProperty()
-  youtube_id = db.StringProperty()
-  zip_code = db.StringProperty()
-
-  # for use with google.appengine.api.images get_serving_url
-  image = db.BlobProperty()
-  gravatar = db.StringProperty()
-
-  user_token = db.StringProperty()
-
-  team_version = db.IntegerProperty(default=1)
-
-  creation_time = db.DateTimeProperty(auto_now_add=True)
-  modification_time = db.DateTimeProperty(auto_now=True)
-
-  @classmethod
-  def create(cls, **kwargs):
-    kwargs["team_version"] = cls.CURRENT_VERSION
-    team = cls(**kwargs)
-    team.put()
-    return team
-
-
-class YoutubeIdField(wtforms.Field):
-  widget = URLInput()
-
-  def __init__(self, label=None, validators=None, **kwargs):
-    wtforms.Field.__init__(self, label, validators, **kwargs)
-
-  def _value(self):
-    if self.data is not None:
-      return u"https://www.youtube.com/watch?v=%s" % unicode(self.data)
-    else:
-      return ''
-
-  def process_formdata(self, valuelist):
-    self.data = None
-    if valuelist:
-      parsed = urlparse.urlparse(valuelist[0])
-      if "youtube.com" not in parsed.netloc:
-        raise ValueError(self.gettext("Not a valid Youtube URL"))
-      video_args = urlparse.parse_qs(parsed.query).get("v")
-      if len(video_args) != 1:
-        raise ValueError(self.gettext("Not a valid Youtube URL"))
-      youtube_id = video_args[0]
-      if not YOUTUBE_ID_VALIDATOR.match(youtube_id):
-        raise ValueError(self.gettext("Not a valid Youtube URL"))
-      self.data = youtube_id
-
-
-class ZipcodeField(wtforms.Field):
-  """
-  A text field, except all input is coerced to an integer.  Erroneous input
-  is ignored and will not be accepted as a value.
-  """
-  widget = wtforms.widgets.TextInput()
-
-  def __init__(self, label=None, validators=None, **kwargs):
-    wtforms.Field.__init__(self, label, validators, **kwargs)
-
-  def _value(self):
-    if self.data is not None:
-      return unicode(self.data)
-    else:
-      return ''
-
-  def process_formdata(self, valuelist):
-    self.data = None
-    if valuelist:
-      try:
-        int(valuelist[0])
-      except ValueError:
-        self.data = None
-        raise ValueError(self.gettext('Not a valid integer value'))
-      else:
-        self.data = valuelist[0]
-
-
-class TeamForm(wtforms.Form):
-  title = wtforms.StringField("Your Name", [
-      wtforms.validators.Length(min=1, max=500)], default=DEFAULT_TITLE)
-  description = wtforms.TextAreaField("Your Personal Message",
-      [wtforms.validators.Length(min=1)],
-      default=DEFAULT_DESC.format(title=DEFAULT_TITLE))
-
-  goal_dollars = IntegerField("Goal", [wtforms.validators.optional()])
-  youtube_id = YoutubeIdField("Youtube Video URL", [
-      wtforms.validators.optional()])
-  zip_code = ZipcodeField("Zip Code", [wtforms.validators.optional()])
-
-
-class ThankYouForm(wtforms.Form):
-  reply_to = wtforms.StringField("Your Email Address", [
-    wtforms.validators.Email(message='Please enter a valid email.'),
-    wtforms.validators.Length(min=1, max=100)])
-  subject = wtforms.StringField("Message Subject", [
-      wtforms.validators.Length(min=1, max=150)], default=DEFAULT_THANKYOU_SUBJECT)
-  message_body = wtforms.TextAreaField("Message Body",
-      [wtforms.validators.Length(min=1, max=10000)],
-      default=DEFAULT_THANKYOU_MESSAGE)
-  new_members = wtforms.BooleanField("Send to new contributors only (have not \
-    previsously received a thank you message)", [], default=True)
-
-
-class Slug(db.Model):
-  # the key is the slug name
-  team = db.ReferenceProperty(Team, required=True)
-
-  @staticmethod
-  @db.transactional
-  def _make(full_slug, team):
-    e = Slug.get_by_key_name(full_slug)
-    if e is not None:
-      return False
-    Slug(key_name=full_slug, team=team).put()
-    return True
-
-  @staticmethod
-  def new(team):
-    slug_name = MULTIDASH_RE.sub('-', INVALID_SLUG_CHARS.sub('-', team.title))
-    slug_name = slug_name.rstrip('-')
-    token_amount = SLUG_TOKEN_AMOUNT
-    while True:
-      slug_prefix = os.urandom(token_amount).encode('hex')
-      token_amount += 1
-      full_slug = "%s-%s" % (slug_prefix, slug_name)
-      if Slug._make(full_slug, team):
-        return full_slug
-
-
-class AdminToTeam(db.Model):
-  """This class represents an admin to team relationship, since it's
-  many-to-many
-  """
-  user = db.StringProperty(required=True)  # from current_user["user_id"]
-  team = db.ReferenceProperty(Team, required=True)
-
-  @staticmethod
-  def memcacheKey(user_id, team):
-    return repr((str(user_id), str(team.key())))
 
 
 def require_login(fn):
@@ -295,36 +144,6 @@ class IndexHandler(BaseHandler):
     if self.logged_in:
       return self.redirect("/dashboard")
     return self.redirect("/login")
-
-
-def leaderboardGetter(offset, limit, orderBy):
-  leaderboard = config_NOCOMMIT.pledge_service.getLeaderboard(
-      offset=offset, limit=limit, orderBy=orderBy)
-  teams = []
-  for idx, team_data in enumerate(leaderboard):
-    if team_data["total_cents"] == 0:
-        continue
-    team = Team.get(db.Key(team_data["team"]))
-    if team is None:
-      continue
-    teams.append({
-        "amount": int(team_data["total_cents"] / 100),
-        "num_pledges":int(team_data["num_pledges"]),
-        "title": team.title,
-        "primary_slug": team.primary_slug,
-        "position": 1 + offset + idx})
-  prev_link, next_link = None, None
-  if offset > 0:
-    prev_link = "?%s" % urllib.urlencode({
-        "offset": max(offset - limit, 0),
-        "limit": limit,
-        "orderBy": orderBy})
-  if len(teams) == limit:
-    next_link = "?%s" % urllib.urlencode({
-        "offset": offset + limit,
-        "limit": limit,
-        "orderBy": orderBy})
-  return teams, prev_link, next_link
           
 class LeaderboardHandler(BaseHandler):
   def get(self):
