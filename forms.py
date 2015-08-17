@@ -4,6 +4,40 @@ from wtforms.fields.html5 import IntegerField
 from wtforms.widgets.html5 import URLInput
 
 
+
+DEFAULT_TITLE = ""
+
+DEFAULT_DESC = u"""\
+The American political system is broken. So broken that it cannot be fixed \
+by any normal process. That's why I'm supporting Lessig for President in 2016.
+
+Every other candidate is handcuffed by the political system, so Lessig \
+is running for office to pass one bill - the Equal Citizens Act of 2017 - \
+that will fundamentally transform our government. And then, after the bill \
+becomes law, he will resign and the vice president will take the office of \
+president.
+
+Running a political campaign isn't cheap, especially running for president. \
+It's estimated that the final Republican and Democratic candidates will \
+spend over $1 billion EACH! So this campaign needs your help.
+
+Elections should be decided on one person, one vote. That's why I'm \
+writing to my friends and family to ask you to contribute. Please join \
+me and support Lessig 2016.
+"""
+
+DEFAULT_THANKYOU_SUBJECT = u"""
+Thank You For Pledging to My Lessig 2016 Page
+"""
+
+DEFAULT_THANKYOU_MESSAGE = u"""
+Thank you for pledging in support of Lessig's 2016 campaign for Equal Citizens. \
+
+You can reach me by replying to this email.
+"""
+
+
+
 class YoutubeIdField(wtforms.Field):
   widget = URLInput()
 
