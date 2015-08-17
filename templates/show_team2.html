@@ -31,8 +31,8 @@
                          "expires=" + date.toGMTString() +
                          ";domain=.lessigforpresident.com;path=/");
     }
-    var ALREADY_BANKED = 1000000;
-    var GOAL_DOLLARS = 5000000;
+    var ALREADY_BANKED = 0;
+    var GOAL_DOLLARS = 1000000;
     $(function() {
       setTeamCookie();
 
@@ -267,7 +267,7 @@
           </div>
           <div class="progress-info">
             <div class="raised pull-left">Raised: <span id="total_dollars"></span></div>
-            <div class="goal pull-right">Next Goal: <span id="goal_dollars"></span></div>
+            <div class="goal pull-right">Goal: <span id="goal_dollars"></span></div>
             <div class="clearfix"></div>
           </div>
 

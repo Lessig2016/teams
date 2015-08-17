@@ -22,8 +22,8 @@
       }
       return x1 + x2;
     }
-    var ALREADY_BANKED = 1000000;
-    var GOAL_DOLLARS = 5000000;
+    var ALREADY_BANKED = 0;
+    var GOAL_DOLLARS = 1000000;
     $(function() {
       var date = new Date();
       date.setTime(date.getTime()+(24*60*60*1000));
@@ -156,7 +156,7 @@
           </div>
           <div class="progress-info">
             <div class="raised uppercase pull-left">Raised: <span id="total_dollars"></span></div>
-            <div class="goal uppercase pull-right">Next Goal: <span id="goal_dollars"></span></div>
+            <div class="goal uppercase pull-right">Goal: <span id="goal_dollars"></span></div>
             <div class="clearfix"></div>
           </div>
 
