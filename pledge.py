@@ -4,7 +4,13 @@ import logging
 import urllib
 from google.appengine.api import urlfetch
 
+import models
+
 class TestPledgeService(object):
+  def __init__(self):
+    self.team = models.Team(title='test', description='test team')
+    self.team.put()
+
   def loadPledgeInfo(self, user_token):
     if user_token.startswith("valid"):
       return {"zip_code": "55555",
@@ -19,7 +25,7 @@ class TestPledgeService(object):
   def getLeaderboard(self, offset=None, limit=None, orderBy=None):
     return [{"total_cents": 100,
              "num_pledges": 2,
-             "team": "ahRkZXZ-bWF5ZGF5LXBhYy10ZWFtc3IRCxIEVGVhbRiAgICAgICACgw"}] * limit
+             "team": str(self.team.key())}] * limit
 
   def updateMailchimp(self, team):
     return None
