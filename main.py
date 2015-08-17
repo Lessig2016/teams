@@ -38,38 +38,35 @@ SLUG_TOKEN_AMOUNT = 2
 DEFAULT_TITLE = ""
 
 DEFAULT_DESC = u"""\
-I recently joined Lessig's citizen-funded MAYDAY.US campaign, an ambitious \
-experiment to win a Congress committed to ending corruption in 2016, and we did something amazing: \
-we raised $1 million dollars in 12 days. That's a ton of money, but it's not enough.
+The American political system is broken. So broken that it cannot be fixed \
+by any normal process. That's why I'm supporting Lessig for President in 2016.
 
-We're raising $5 million more by July 4, and I'm writing to my friends and family to \
-ask if you can help us get the rest of the way there. If all of us who have supported \
-the campaign so far each recruit just five matching pledges, we'd easily hit that goal. \
-But I'd like to see if I can recruit ten of my friends to donate. So my question is: \
-will you be one of those ten?
+Every other candidate is handcuffed by the political system, so Lessig \
+is running for office to pass one bill - the Equal Citizens Act of 2017 - \
+that will fundamentally transform our government. And then, after the bill \
+becomes law, he will resign and the vice president will take the office of \
+president.
 
+Running a political campaign isn't cheap, especially running for president. \
+It's estimated that the final Republican and Democratic candidates will \
+spend over $1 billion EACH! So this campaign needs your help.
+
+Elections should be decided on one person, one vote. That's why I'm \
+writing to my friends and family to ask you to contribute. Please join \
+me and support Lessig 2016.
 """
 
-PREVIOUS_PLEDGE_DESC = u"""\
-I recently joined Lessig's citizen-funded MAYDAY.US campaign, an ambitious \
-experiment to win a Congress committed to ending corruption in 2016, and we did something amazing: \
-We raised $1 million dollars in 12 days. That's a ton of money, but it's not enough.
-
-We're raising $5 million more by July 4, and I'm writing to my friends and family to \
-ask if you can help us get the rest of the way there. If all of us who have supported \
-the campaign so far each recruit just five matching pledges, we'd easily hit that goal. \
-But I'd like to see if I can recruit ten of my friends to donate. So my question is: \
-will you be one of those ten?
+PREVIOUS_PLEDGE_DESC = DEFAULT_DESC + u"""\
 
 {signature}
 """
 
 DEFAULT_THANKYOU_SUBJECT = u"""
-Thank You For Pledging to My Mayday PAC Page
+Thank You For Pledging to My Lessig 2016 Page
 """
 
 DEFAULT_THANKYOU_MESSAGE = u"""
-Thank you for pledging in support of Mayday's campaign to get money out of politics. \
+Thank you for pledging in support of Lessig's 2016 campaign for Equal Citizens. \
 
 You can reach me by replying to this email.
 """
