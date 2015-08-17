@@ -3,12 +3,12 @@
 {% extends "includes/base.html" %}
 {% block head %}
   <!-- for facebook sharing -->
-  <meta property="og:image" content="https://mayday.us/images/share_preview.jpg"/>
+  <meta property="og:image" content="https://lessigforpresident.com/wp-content/uploads/2015/08/facebook-og-image.jpg"/>
   <meta property="og:title" content="{{team.title|escape}}'s pledge page"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="myMaydayPAC"/>
+  <meta property="og:site_name" content="Lessig2016Teams"/>
   <meta property="og:description"
-        content="Our democracy needs an upgrade."/>
+        content="Our government doesn't represent us because the system is rigged. Lets help Lessig fix it."/>
 
   <script>
     function addCommas(nStr) {
@@ -29,10 +29,10 @@
       date.setTime(date.getTime()+(24*60*60*1000));
       document.cookie = ("last_team_key={{team.key()}};" +
                          "expires=" + date.toGMTString() +
-                         ";domain=.mayday.us;path=/");
+                         ";domain=.lessigforpresident.com;path=/");
 
       var reload = function() {
-        $.getJSON("https://pledge.mayday.us/r/total",
+        $.getJSON("https://pledge.lessigforpresident/r/total",
                   {"team": "{{team.key()}}"})
         .done(function(data) {
           $("#team_total_dollars").text("$" + addCommas(
@@ -58,7 +58,7 @@
       setInterval(reload, 15000);
 
       var update_pledgers = function() {
-        $.getJSON("https://pledge.mayday.us/r/pledgers",
+        $.getJSON("https://pledge.lessigforpresident.com/r/pledgers",
                   {"team": "{{team.key()}}"})
         .done(function(data) {
           if (data["pledgers"].length == 0) {
@@ -109,10 +109,10 @@
           <h2>{{team.title}}’s pledge page</h2>
 
           {% if not team.youtube_id and not team.image_url %}
-            <h3>A word from Lessig about the Mayday PAC:</h3>
+            <h3>A word from Lessig:</h3>
 
             <div class="video-container">
-              <iframe src="//player.vimeo.com/video/97246128" width="420"
+              <iframe src="//www.youtube.com/embed/CaqrQz71bMk" width="420"
                   height="236" frameborder="0" webkitallowfullscreen
                   mozallowfullscreen allowfullscreen></iframe>
             </div>
@@ -178,19 +178,19 @@
           <!-- social buttons -->
           <div class="social-icons">
             <a href="https://twitter.com/intent/tweet?text={{
-              ("Money has corrupted our democracy. I pledged to fix it. Check out my #MAYDAYUS page -- " + current_url) | urlencode }}"
+              ("Lessig is running for president to fix our democracy. I pledged to help him. Check out my #Lessig2016 page -- " + current_url) | urlencode }}"
                 class="twitter" target="_blank"></a>
             <a href="http://www.facebook.com/sharer.php?u={{current_url|urlencode}}" class="facebook" target="_blank"></a>
-            <a href="mailto:?to=&subject={{"Money has corrupted our democracy"|urlencode}}&body={{("""Friend,
+            <a href="mailto:?to=&subject={{"Lets help Lessig fix our democracy"|urlencode}}&body={{("""Friend,
 
-Money has corrupted our democracy. Now what?
+Money has corrupted our political process. Now what?
 
 We need an upgrade.
 
-Visit my page at MAYDAY.US -- A grassroots political experiment created to fix government for all of us:
+Visit my page at lessig2016.us -- A grassroots political experiment created to fix government for all of us:
 """ + current_url + """
 
-Please join me and other Americans who want to shift the influence of money in politics.
+Please join me and other Americans who want to build a truly representative democracy.
 
 Thank you,
 """ + team.title)|urlencode}}" class="email" target="_blank"></a>
