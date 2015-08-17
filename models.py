@@ -1,4 +1,11 @@
+import os
+import re
+
 from google.appengine.ext import db
+
+INVALID_SLUG_CHARS = re.compile(r'[^\w-]')
+MULTIDASH_RE = re.compile(r'-+')
+SLUG_TOKEN_AMOUNT = 2
 
 class Team(db.Model):
   CURRENT_VERSION = 2

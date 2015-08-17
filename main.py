@@ -2,10 +2,7 @@ import csv
 import functools
 import hashlib
 import json
-import os
-import re
 import urllib
-import urlparse
 import logging
 import traceback
 
@@ -18,6 +15,8 @@ from google.appengine.api import urlfetch
 
 import config_NOCOMMIT
 
+from forms import TeamForm
+from models import AdminToTeam, Team, Slug
 from util import leaderboardGetter
 
 JINJA = jinja2.Environment(
@@ -26,11 +25,6 @@ JINJA = jinja2.Environment(
   autoescape=True)
 JINJA.filters["urlencode"] = \
     lambda s: urllib.quote(s.encode('ascii', errors='ignore'), safe="")
-
-YOUTUBE_ID_VALIDATOR = re.compile(r'^[\w\-]+$')
-INVALID_SLUG_CHARS = re.compile(r'[^\w-]')
-MULTIDASH_RE = re.compile(r'-+')
-SLUG_TOKEN_AMOUNT = 2
 
 from forms import DEFAULT_DESC
 

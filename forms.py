@@ -1,9 +1,12 @@
+import re
+import urlparse
+
 import wtforms
 
 from wtforms.fields.html5 import IntegerField
 from wtforms.widgets.html5 import URLInput
 
-
+YOUTUBE_ID_VALIDATOR = re.compile(r'^[\w\-]+$')
 
 DEFAULT_TITLE = ""
 
