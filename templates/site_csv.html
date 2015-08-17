@@ -45,7 +45,7 @@ function make_csv(data) {
   return output;
 }
 function fill_amounts(team, done_cb) {
-  $.getJSON("https://pledge.mayday.us/r/total", {"team": team["key"]})
+  $.getJSON("https://pledge.lessigforpresident.com/r/total", {"team": team["key"]})
   .done(function(data) {
     team["pledges"] = data["teamPledges"];
     team["dollars"] = data["teamTotalCents"] / 100;
@@ -63,7 +63,7 @@ function fill_user(team, done_cb) {
     team["user_token_email"] = "";
     return done_cb();
   }
-  $.getJSON("https://pledge.mayday.us/user-info/" + team["user_token"])
+  $.getJSON("https://pledge.lessigforpresident.com/user-info/" + team["user_token"])
   .done(function(data) {
     team["user_token_name"] = data["user"]["name"];
     team["user_token_email"] = data["user"]["email"];
