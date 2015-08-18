@@ -10,6 +10,28 @@
   text-transform: uppercase;
 }
 
+
+nav {
+  background-color: #70727E;
+  line-height: 75px;
+}
+
+nav a:link, nav a:hover, nav a:active, nav a:visited {
+  display: block;
+  float: left;
+  color: #F6FE59;
+  text-decoration: underline;
+  padding: 0 30px;
+}
+
+nav a:hover {
+  background-color: #4A4F6C;
+  text-decoration: none;
+  color: #F6FE59;
+}
+
+
+
 /* ==========================<< .pledgepage /et cetera/ >>>=====================*/
 .pledgepage {
   /* ========================< Body >================================*/
