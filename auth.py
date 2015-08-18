@@ -96,7 +96,7 @@ class ProdAuthService(object):
               "return_to": return_to})),
           headers={"Cookie": c["auth"].OutputString()},
           follow_redirects=False,
-          validate_certificate=True)
+          validate_certificate=False)
       if resp.status_code != 200:
         raise Exception("Unexpected authentication error: %s", resp.content)
       return json.loads(resp.content)

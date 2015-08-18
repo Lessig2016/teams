@@ -37,7 +37,7 @@ class ProdPledgeService(object):
 
   def fetcher(self, url):
     return urlfetch.fetch(url, follow_redirects=False,
-                          validate_certificate=True)      
+                          validate_certificate=False)
                         
   def poster(self, url, post_data):
     post_data_encoded = urllib.urlencode(post_data)
