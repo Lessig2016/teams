@@ -37,12 +37,16 @@ nav a:hover {
   /* ========================< Body >================================*/
   /* ========================< Sidebar >=============================*/
 }
-.pledgepage * {
-  font-family: Questrial, Helvetica, Arial, sans-serif;
-}
-.pledgepage h2, .pledgepage h3 {
+
+
+.pledgepage h2 {
   font-weight: 700;
+  font-size: 40px;
+  color: #3752E9;  /* blue */
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
+
 .pledgepage button {
   display: block;
   background: #d2393c;
