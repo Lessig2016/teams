@@ -47,6 +47,36 @@ nav a:hover {
   margin-bottom: 40px;
 }
 
+.pledgepage a.share {
+  display: block;
+  float: right;
+  line-height: 40px;
+  margin: 1em;
+  margin-top: 40px;
+  color: #FF5153;  /* red */
+  text-transform: uppercase;
+}
+
+.pledgepage .share.row {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.pledgepage .share-btn {
+  font-size: 30px;
+  text-align: center;
+  line-height: 80px;
+}
+
+.pledgepage .share-btn a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
 .pledgepage button {
   display: block;
   background: #d2393c;
@@ -87,6 +117,7 @@ nav a:hover {
 .pledgepage #pledgecol-main .video-container {
   border: 0;
   padding-top: 50px;
+  margin-right: 2em;
 }
 .pledgepage #pledgecol-main img.avatar {
   float: left;
