@@ -140,33 +140,49 @@
           </div>
         </div>
 
-        <div class="col-md-4" id="pledgecol-sidebar">
-          <!-- page stats !-->
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title uppercase">This page</h3>
-            </div>
-            <div class="panel-body">
-              <h6>PEOPLE WHO JOINED</h6>
-              <h5 class="amount" id="team_total_people_joined">{{team.total_people_joined}}</h5>
+        <div class="col-md-12 stat_bar">
+          <div class="page_stats col-md-6">
+            {#
+            <h6>PEOPLE WHO JOINED</h6>
+            <h5 class="amount" id="team_total_people_joined">{{team.total_people_joined}}</h5>
+            #}
 
-              <h6>AMOUNT RAISED</h6>
+            <div class="stat">
               <h5 class="amount" id="team_total_dollars"></h5>
-
-              <h6>PLEDGES</h6>
+              <p>Donated via this page</p>
+            </div><!-- eo .stat -->
+            <div class="stat">
               <h5 class="pledges" id="team_total_pledges"></h5>
-              
-              <div id="pledger-list">
-                <h6>PEOPLE WHO PLEDGED TO YOUR PAGE:</h6>
-                <ul>
-                  <!-- filled in with js -->
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+              <p>Pledges</p>
+            </div><!-- eo .stat -->
+            <div class="stat">
+              <h5 id="days_left">
+                <script>
+                  var current_time = (new Date()).getTime();
+                  var deadline_time = (new Date(new Date().getFullYear(),8,7)).getTime();
+                  var one_day = (24*60*60*1000);
+                  var remaining_time = deadline_time - current_time;
+                  var days_left = Math.round(remaining_time / one_day) + 1;
+                  document.write(days_left);
+                </script>
+              </h5>
+              <p>Days left</p>
+            </div><!-- eo .stat -->
+          </div><!-- eo .page_stats -->
+          <div class="campaign col-md-6">
+            <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">
+              Donate
+            </a>
+            <p>
+              Campaign totals:<br>
+              <strong>
+                <span id="campaign_pledges"></span> Pledges<br>
+                <span id="total_dollars"></span> Total
+              </strong>
+            </p>
+          </div><!-- eo .campaign -->
+        </div><!-- eo .stat_bar -->
+      </div><!-- eo .row -->
 
     </div><!-- eo .container -->
   </div><!-- eo .pledgepage -->

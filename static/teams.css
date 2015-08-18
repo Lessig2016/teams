@@ -76,6 +76,55 @@ nav a:hover {
 
 
 
+.pledgepage .page_stats, .pledgepage .campaign .donate_btn, .pledgepage .campaign p {
+  margin: 60px 0;
+}
+
+.pledgepage .page_stats .stat {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 0 1em;
+  color: #FF5153;  /* red */
+  border-right: 1px solid #3752E9;  /* blue */
+  width: 33.3%;
+  height: 75px;
+}
+
+.pledgepage .page_stats .stat:last-child {
+  border-right: none;
+}
+
+.pledgepage .page_stats .stat h5 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.pledgepage .page_stats .stat p {
+  line-height: 1em;
+}
+.pledgepage .campaign .donate_btn {
+  display: inline-block;
+  float: left;
+  width: 46%;
+  line-height: 65px;
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: white;
+  background-color: #3752E9;  /* blue */
+}
+
+.pledgepage .campaign p {
+  display: inline-block;
+  float: right;
+  width: 46%;
+  color: #FF5153;  /* red */
+}
+
+
+
 
 .pledgepage button {
   display: block;
