@@ -33,11 +33,11 @@ p {
 /*Bootstrapper only reaches 960px, so we need to wrap our rows in yet another div - one that reaches the full width of the page*/
 
 body {
-    font-family: "Merriweather",Georgia,"Times New Roman",Times,serif;
+    font-family: "proxima-nova", "Montserrat", helvetica, arial, sans-serif;
 }
 body, html {
   height: auto;
-  background: #c6c8ca;
+  background: white;
 }
 
 .full-width {

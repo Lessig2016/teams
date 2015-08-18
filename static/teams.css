@@ -1,3 +1,7 @@
+#main_body {
+  margin-top: 0;
+}
+
 .lowercase {
   text-transform: lowercase;
 }
