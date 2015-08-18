@@ -41,6 +41,30 @@
     
     <div class="full-width" id="wrapper">
 
+    <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+      <!-- links shown only if you're logged in -->
+      {#% if logged_in %#}
+        <nav>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <a href="/dashboard">Dashboard</a>
+                {% if edit_url %}
+                  <a href="{{edit_url}}">Edit this page</a>
+                  <a href="/dashboard/new">Create another page</a>
+                  <a href="{{thank_url}}">Thank your contributors</a>
+                {% else %}
+                  <a href="/dashboard/new">Create your own page</a>
+                {% endif %}
+                  <a href="/leaderboard">View leaderboard</a>
+                <div class="pull-right">
+                  <a href="{{logout_link}}">Logout</a>
+                </div>
+              <!-- </div>eo .col-md-12 -->
+            <!-- </div>eo .row -->
+          </div><!-- eo .container -->
+        </nav><!-- eo .nav -->
+      {#% endif %#}
       <div class="{{body_class}}" id="main_body">
         <div class="container">
           {% block body %}{% endblock %}
