@@ -404,6 +404,10 @@ p.markdown-note {
   margin: 115px 0 0 0;
 }
 
+.login_text .login_buttons {
+  display: inline-block;
+}
+
 .login_leaderboard {
   float: left;
   width: 360px;

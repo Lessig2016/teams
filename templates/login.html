@@ -2,22 +2,22 @@
 {% block body %}
   
   <div class="login_text">
-    <h1>Here to take back our government from the grip of corruption?</h1> 
-    <h2>Great. Here are some ways that you can get involved:</h2>
-
-  </div>
-  <div class="login_buttons">
-    <div class="btn-group-vertical">
-      {% if login_links %}
-        {% for service, service_link in login_links.iteritems() %}
-          <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}">
-            <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
-          </a>
-        {% endfor %}
-      {% endif %}
-      <!-- IDs must match what is returned from the auth service in links -->
-    </div>
-  </div><!-- eo .login_buttons -->
+    <h1>Want to help Lessig fight for Equal Citizenship?</h1>
+    <h2>Great. Log in and start building your recruiting page:</h2>
+    <div class="login_buttons">
+      <div class="btn-group-vertical">
+        {% if login_links %}
+          {% for service, service_link in login_links.iteritems() %}
+            <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}">
+              <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
+            </a>
+          {% endfor %}
+        {% endif %}
+        <!-- IDs must match what is returned from the auth service in links -->
+      </div>
+    </div><!-- eo .login_buttons -->
+  </div><!-- eo .login_text -->
+  {#
   <div class="action_options">
     <div class="arrow_down"></div>
     <ul>
@@ -28,4 +28,5 @@
       <li class="list_item"><a href="https://lessigforpresident.com/take-action/"> Become a volunteer </a></li>
     </ul>
   </div>
+  #}
 {% endblock %}
