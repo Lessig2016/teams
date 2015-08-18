@@ -97,41 +97,51 @@
 {% block body %}
   <div class="pledgepage" >
     <div class="container">
-
       <div class="row">
-        <div class="col-md-8" id="pledgecol-main">
-
-          <h2>{{team.title}}’s pledge page</h2>
-
-          {% if not team.youtube_id and not team.image_url %}
-            <h3>A word from Lessig:</h3>
-
-            <div class="video-container">
-              <iframe src="//www.youtube.com/embed/CaqrQz71bMk" width="420"
-                  height="236" frameborder="0" webkitallowfullscreen
-                  mozallowfullscreen allowfullscreen></iframe>
-            </div>
-
-          {% elif team.youtube_id %}
-            <div class="video-container">
-              <iframe src="//www.youtube.com/embed/{{team.youtube_id}}"
-                  frameborder="0" allowfullscreen width="420"></iframe>
-            </div>
-          {% elif team.image_url %}
-            <div class="video-container">
-              <img src="{{team.image_url}}" />
-            </div>
-
-          {% endif %}
-
-          <h2>A word from {{team.title}}:</h2>
-
-          {{description_rendered|safe}}
+        <div id="pledgecol-main">
+          <div class="col-md-12">
+            <a class="share" href="#" onclick="$('.row.share').slideToggle();">Share</a>
+            <h2>{{team.title}}’s Pledge Page</h2>
+            <div class="row share" style="display: none">
+              <div class="col-sm-4 share-btn">
+	              <a href="https://www.facebook.com/sharer/sharer.php?u=https://lessigforpresident.com/" title="" target="_blank" style="background-color:#3b5998;">
+	                <i class="fa fa-facebook-square"></i> Share
+                </a>
+              </div><!-- eo .share_btn -->
+              <div class="col-sm-4 share-btn">
+                <a href="https://twitter.com/home?status=%40lessig%20is%20running%20for%20referendum%20presidency%20to%20fix%20our%20democracy%20once%20and%20for%20all%20%23lessig2016" title="" target="_blank" style="background-color:#00aced;">
+                  <i class="fa fa-twitter"></i> Tweet
+                </a>
+              </div><!-- eo .share_btn -->
+              <div class="col-sm-4 share-btn">
+                <a href="https://instagram.com/lessig2016/" title="" target="_blank" style="background-color:#517fa4;">
+                  <i class="fa fa-envelope"></i> Email
+                </a>
+              </div><!-- eo .share_btn -->
+            </div><!-- eo .share.row -->
+            <div class="col-md-6">
+              <div class="video-container">
+                {% if not team.youtube_id and not team.image_url %}
+                  <iframe src="//www.youtube.com/embed/CaqrQz71bMk" width="420"
+                      height="236" frameborder="0" webkitallowfullscreen
+                      mozallowfullscreen allowfullscreen></iframe>
+                {% elif team.youtube_id %}
+                  <iframe src="//www.youtube.com/embed/{{team.youtube_id}}"
+                      frameborder="0" allowfullscreen width="420"></iframe>
+                {% elif team.image_url %}
+                  <img src="{{team.image_url}}" />
+                {% endif %}
+              </div><!-- eo .video-container -->
+            </div><!-- eo .col-md-6 -->
+            <div class="short-message">
+            {{description_rendered|safe}}
+            </div><!-- eo .short-message -->
 
           <a href="{{pledge_root_url}}/pledge?team={{team.key()}}"
               class="pledge-link">
             <button class="btn">Pledge Now</button>
           </a>
+          </div>
         </div>
 
         <div class="col-md-4" id="pledgecol-sidebar">
