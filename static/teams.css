@@ -32,6 +32,35 @@ nav a:hover {
 
 
 
+
+.start-campaign-cta {
+  background-color: #FF4443;
+  color: white;
+  margin-top: 60px;
+}
+
+.start-campaign-cta .content {
+  height: 203px;
+  background-image: url(/static/lessig-red.png);
+  background-repeat: no-repeat;
+}
+.start-campaign-cta h3 {
+  text-align: center;
+  margin-top: 45px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.start-campaign-cta h3 a, .start-campaign-cta h3 a:hover, .start-campaign-cta h3:visited a, .start-campaign-cta h3 a:active{
+  display: inline-block;
+  border: 7px solid white;
+  color: white;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+
 /* ==========================<< .pledgepage /et cetera/ >>>=====================*/
 .pledgepage {
   /* ========================< Body >================================*/
@@ -122,7 +151,6 @@ nav a:hover {
   width: 46%;
   color: #FF5153;  /* red */
 }
-
 
 
 
