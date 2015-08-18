@@ -15,7 +15,7 @@ from google.appengine.api import urlfetch
 
 import config_NOCOMMIT
 
-from forms import TeamForm
+from forms import TeamForm, ThankYouForm
 from models import AdminToTeam, Team, Slug
 from util import leaderboardGetter
 
