@@ -41,20 +41,6 @@
     
     <div class="full-width" id="wrapper">
 
-      <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-      <div class="row flag-header">
-        <div class="container">
-          <div class="top-menu pull-right">
-            {% if logged_in %}
-              <a href="{{logout_link}}">Logout</a>
-            {% else %}
-              <button data-toggle="modal" data-target="#login_modal">Login</button>
-            {% endif %}
-          </div>
-<!-- existing logo !-->
-          <a href="https://lessigforpresident.com/"><img width="149px" src="https://lessigforpresident.com/wp-content/uploads/2015/08/logo-2016.png"></a>
-        </div>
-      </div>
       <div class="{{body_class}}" id="main_body">
         <div class="container">
           {% block body %}{% endblock %}
