@@ -13,6 +13,9 @@ def leaderboardGetter(offset, limit, orderBy):
   for idx, team_data in enumerate(leaderboard):
     if team_data["total_cents"] == 0:
         continue
+    if team_data["team"].startswith('{{team.key()}}'):
+        # sentinel value == no team
+        continue
     team = Team.get(db.Key(team_data["team"]))
     if team is None:
       continue

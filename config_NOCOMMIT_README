@@ -14,3 +14,6 @@ pledge_service = TestPledgeService()
 ## For production.
 #auth_service = ProdAuthService("https://auth.lessigforpresident.com")
 #pledge_service = ProdPledgeService(PLEDGE_SERVICE_URL)
+
+# For testing locally with prod auth service
+# auth_service.requires_https = False
