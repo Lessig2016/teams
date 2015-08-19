@@ -43,7 +43,7 @@
 
     <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
       <!-- links shown only if you're logged in -->
-      {#% if logged_in %#}
+      {% if logged_in %}
         <nav>
           <div class="container">
             <div class="row">
@@ -63,7 +63,7 @@
             <!-- </div>eo .row -->
           </div><!-- eo .container -->
         </nav><!-- eo .nav -->
-      {#% endif %#}
+      {% endif %}
       <div class="{{body_class}}" id="main_body">
         {% block body %}{% endblock %}
       </div>
