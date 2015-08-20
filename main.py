@@ -378,7 +378,8 @@ class ThankTeamHandler(TeamBaseHandler):
       return self.redirect("/t/%s/edit" % team.primary_slug, permanent=True)
     if not is_admin:
       return self.redirect("/t/%s" % team.primary_slug)
-    self.render_template("thank_team.html", form=ThankYouForm(obj=team))
+    edit_url = "/t/%s/edit" % team.primary_slug
+    self.render_template("thank_team.html", edit_url=edit_url, form=ThankYouForm(obj=team))
 
   # require_login unneeded because we do the checking ourselves with validate
   def post(self, slug):
