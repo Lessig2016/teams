@@ -114,11 +114,15 @@ class LeaderboardHandler(BaseHandler):
     offset = int(self.request.get("offset") or 0)
     limit = int(self.request.get("limit") or 25)
     orderBy = self.request.get("orderBy") or "-totalCents"
+
+    edit_url=None
+    if self.logged_in:
+      edit_url = self.pledge_root_url
         
     teams, prev_link, next_link = leaderboardGetter(offset, limit, orderBy)
     self.render_template("leaderboard.html", teams=teams,
-        prev_link=prev_link, next_link=next_link, orderBy=orderBy)
-
+      prev_link=prev_link, next_link=next_link, orderBy=orderBy,
+      edit_url=edit_url)
 
 class LoginHandler(BaseHandler):
   def get(self):    
