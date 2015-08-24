@@ -104,9 +104,9 @@ class TeamForm(wtforms.Form):
       default=DEFAULT_DESC.format(title=DEFAULT_TITLE))
 
   goal_dollars = IntegerField("Goal", [wtforms.validators.optional()])
-  youtube_id = YoutubeIdField("Youtube Video URL", [
+  youtube_id = YoutubeIdField("YouTube Video URL", [
       wtforms.validators.optional()])
-  zip_code = ZipcodeField("Zip Code", [wtforms.validators.optional()])
+  zip_code = ZipcodeField("ZIP Code", [wtforms.validators.optional()])
 
 
 class ThankYouForm(wtforms.Form):
