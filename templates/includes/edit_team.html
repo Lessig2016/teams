@@ -1,9 +1,9 @@
 <form method="post">
   <div class="container">
     <div class="col-md-6">
-      <h2>Required:</h2>
+      <h2>Your Page</h2>
       <dl>
-        <dt>{{form.title.label}}</dt>
+        <dt>{{form.title.label}} (required)</dt>
         <dd>
           <div>{{form.title}}</div>
           <p class="markdown-note">This will show up on your page as &ldquo;[Your Name]'s pledge page:&rdquo;</p>
@@ -15,7 +15,7 @@
             </ul>
           {% endif %}
         </dd>
-        <dt>{{form.description.label}}</dt>
+        <dt>{{form.description.label}} (required)</dt>
         <dd>
           <div>{{form.description(rows=10, style="width: 100%;")}}</div>
           {% if form.description.errors %}
