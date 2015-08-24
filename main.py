@@ -45,7 +45,7 @@ class BaseHandler(webapp2.RequestHandler):
     if config_NOCOMMIT.auth_service.requires_https:
       self.request.scheme = "https"
     return config_NOCOMMIT.auth_service.getAuthResponse(
-        self.request.cookies.get("auth", ""), self.request.url)
+        self.request.cookies.get("auth", ""), self.request.host_url + '/static/post_login.html')
 
   @property
   def logged_in(self):

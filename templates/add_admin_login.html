@@ -1,15 +1,29 @@
 {% extends "includes/base.html" %}
 {% block body %}
-  <div class="page-header">
+  <script>
+    function popupLogin(url) {
+      var newwindow = window.open(url,'login','height=450,width=450,menubar=0,toolbar=0');
+      if (window.focus) {
+        newwindow.focus();
+      }
+      return false;
+    }
+  </script>
+  <div class="login_text">
     <h2>Login to allow editing your pledge page later</h2>
-  </div>
-  <div class="page-body">
-    <ul>
-      {% for service, service_link in login_links.iteritems() %}
-        <li><a href="{{service_link}}">Log in with {{service}}</a></li>
-      {% endfor %}
-    </ul>
+    <div class="login_buttons">
+      <div class="btn-group-vertical">
+        {% if login_links %}
+          {% for service, service_link in login_links.iteritems() %}
+            <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}" onclick="return popupLogin('{{service_link}}');">
+              <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
+            </a>
+          {% endfor %}
+        {% endif %}
+        <!-- IDs must match what is returned from the auth service in links -->
+      </div>
+    </div><!-- eo .login_buttons -->
+    <p>or<br><a href="/t/{{team.primary_slug}}">Continue without logging in</a></p>
+  </div><!-- eo .login_text -->
 
-    <a href="/t/{{team.primary_slug}}">Continue without logging in</a>
-  </div>
 {% endblock %}

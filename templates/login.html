@@ -1,6 +1,14 @@
 {% extends "includes/base.html" %}
 {% block body %}
-  
+  <script>
+    function popupLogin(url) {
+      var newwindow = window.open(url,'login','height=450,width=450,menubar=0,toolbar=0');
+      if (window.focus) {
+        newwindow.focus();
+      }
+      return false;
+    }
+  </script>
   <div class="login_text">
     <h1>Want to help Lessig fight for Equal Citizenship?</h1>
     <h2>Great. Log in and start building your recruiting page:</h2>
@@ -8,7 +16,7 @@
       <div class="btn-group-vertical">
         {% if login_links %}
           {% for service, service_link in login_links.iteritems() %}
-            <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}">
+            <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}" onclick="return popupLogin('{{service_link}}');">
               <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
             </a>
           {% endfor %}
