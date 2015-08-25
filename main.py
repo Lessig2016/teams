@@ -421,6 +421,9 @@ class ThankTeamHandler(TeamBaseHandler):
     else:
       return self.render_template("thank_team.html", form=form, error=result.content)
 
+class FBShareTeamHandler(BaseHandler):
+  def get(self, slug):
+    self.render_template("fb_share.html", team_slug=slug)
 
 class AdminHandler(webapp2.RequestHandler):
   def render_template(self, template, **data):
@@ -467,6 +470,7 @@ app = webapp2.WSGIApplication(config_NOCOMMIT.auth_service.handlers() + [
   (r'/t/([^/]+)/edit?', EditTeamHandler),
   (r'/t/([^/]+)/share?', ShareTeamHandler),
   (r'/t/([^/]+)/thank?', ThankTeamHandler),
+  (r'/t/([^/]+)/fb_share?', FBShareTeamHandler),
   (r'/login/?', LoginHandler),
   (r'/dashboard/?', DashboardHandler),
   (r'/dashboard/new/?', NewTeamHandler),

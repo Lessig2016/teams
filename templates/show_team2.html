@@ -104,17 +104,30 @@
             <h2>{{team.title}}’s Pledge Page</h2>
             <div class="row share" style="display: none">
               <div class="col-sm-4 share-btn">
-	              <a href="https://www.facebook.com/sharer/sharer.php?u=https://lessigforpresident.com/" title="" target="_blank" style="background-color:#3b5998;">
+	              <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://team.lessigforpresident.com/t/' + team.primary_slug + '/fb_share') | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
 	                <i class="fa fa-facebook-square"></i> Share
                 </a>
               </div><!-- eo .share_btn -->
               <div class="col-sm-4 share-btn">
-                <a href="https://twitter.com/home?status=%40lessig%20is%20running%20for%20referendum%20presidency%20to%20fix%20our%20democracy%20once%20and%20for%20all%20%23lessig2016" title="" target="_blank" style="background-color:#00aced;">
+                <a href="https://twitter.com/intent/tweet?text={{
+  ("It's time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=" + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
                   <i class="fa fa-twitter"></i> Tweet
                 </a>
               </div><!-- eo .share_btn -->
               <div class="col-sm-4 share-btn">
-                <a href="https://instagram.com/lessig2016/" title="" target="_blank" style="background-color:#517fa4;">
+                <a href="mailto:?to=&amp;subject={{"Lets help Lessig fix our democracy"|urlencode}}&amp;body={{("""Friend,
+
+Money has corrupted our political process. Now what?
+
+We need an upgrade.
+
+Visit my page supporting Lessig for president to fix government for all of us:
+https://lessigforpresident.com/take-action/recruit/?team=""" + team.primary_slug + """
+
+Please join me and other Americans who want to build a truly representative democracy.
+
+Thank you,
+""" + team.title)|urlencode}}" title="" target="_blank" style="background-color:#517fa4;">
                   <i class="fa fa-envelope"></i> Email
                 </a>
               </div><!-- eo .share_btn -->
