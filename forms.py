@@ -15,7 +15,7 @@ The American political system is broken. So broken that it cannot be fixed \
 by any normal process. That's why I'm supporting Lessig for President in 2016.
 
 Every other candidate is handcuffed by the political system, so Lessig \
-is running for office to pass one bill - the Equal Citizens Act of 2017 - \
+is running for office to pass one bill \u2014 the Equal Citizens Act of 2017 \u2014 \
 that will fundamentally transform our government. And then, after the bill \
 becomes law, he will resign and the vice president will take the office of \
 president.
