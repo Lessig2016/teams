@@ -10,21 +10,39 @@
     }
   </script>
   <div class="login_text">
-    <h1>Want to help Lessig fight for Equal Citizenship?</h1>
-    <h2>Great. Log in and start building your recruiting page:</h2>
-    <div class="login_buttons">
-      <div class="btn-group-vertical">
-        {% if login_links %}
-          {% for service, service_link in login_links.iteritems() %}
-            <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}" onclick="return popupLogin('{{service_link}}');">
-              <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
-            </a>
-          {% endfor %}
-        {% endif %}
-        <!-- IDs must match what is returned from the auth service in links -->
-      </div>
-    </div><!-- eo .login_buttons -->
+    <h1>Ready to help Lessig #FixDemocracyFirst?</h1>
+    <h2>Create your own fundraising page!</h2>
   </div><!-- eo .login_text -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          You are the heart of this people-powered project. And we need your help to reach new supporters for our campaign to fix democracy in America.
+        </p>
+        <p>
+          Sign in using Google or Facebook to create a personalized pledge page. You can tell the world — with your own words and YouTube video — what issues matter to you and why you want to #FixDemocracyFirst.
+        </p>
+        <div class="login_buttons">
+          <div class="btn-group btn-group-lg btn-group-justified">
+            {% if login_links %}
+              {% for service, service_link in login_links.iteritems() %}
+                <a class="btn btn-social btn-{{service}}" id="btn-{{service}}" href="{{service_link}}" onclick="return popupLogin('{{service_link}}');">
+                  <i class="fa fa-{{service}}"></i> Log in with {{service|title}}
+                </a>
+              {% endfor %}
+            {% endif %}
+            <!-- IDs must match what is returned from the auth service in links -->
+          </div>
+        </div><!-- eo .login_buttons -->
+        <p>
+        Share it with your family, friends, and colleagues and help them understand why this is so important for all of us.
+        </p>
+      </div><!-- .col-lg-6 -->
+      <div class="col-md-6">
+        <img src="/static/pledge-page-screenshot.png" style="width:100%;">
+      </div><!-- .col-lg-6 -->
+    </div><!-- .row -->
+  </div><!-- eo .container -->
   {#
   <div class="action_options">
     <div class="arrow_down"></div>
