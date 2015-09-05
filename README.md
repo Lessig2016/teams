@@ -1,6 +1,6 @@
 # teams
 
-The backend app that powers [team.lessigforpresident.com](team.lessigforpresident.com)
+The backend app that powers [team.lessigforpresident.com](https://team.lessigforpresident.com)
 
 Report improvements/bugs at https://github.com/inmomentsoftware/teams/issues.
 
