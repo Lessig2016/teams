@@ -37,7 +37,18 @@
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <dl>        
-        <dt>{{form.youtube_id.label}}</dt>
+        <dt>{{form.goal_dollars.label}}</dt>
+        <dd>
+          <div>{{form.goal_dollars}}</div>
+          {% if form.goal_dollars.errors %}
+            <ul class="errors">
+              {% for error in form.goal_dollars.errors %}
+                <li>{{error}}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </dd>
+        <dt style="margin-top: 1em">{{form.youtube_id.label}}</dt>
         <dd>
           <div>{{form.youtube_id}}</div>
           {% if form.youtube_id.errors %}

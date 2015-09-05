@@ -36,7 +36,7 @@ nav a:hover {
 .start-campaign-cta {
   background-color: #FF4443;
   color: white;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .start-campaign-cta .content {
@@ -87,9 +87,23 @@ nav a:hover {
 }
 
 .pledgepage .share.row {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 100ms ease-in-out, height 100ms ease-in-out;
 }
+.pledgepage .share.row.open {
+  height: 240px;
+  opacity: 1;
+  transition: height 100ms ease-in-out, opacity 300ms ease-in-out 200ms;
+}
+@media (min-width: 768px) {
+  .pledgepage .share.row.open {
+    height: 80px;
+  }
+}
+
 .pledgepage .share-btn {
   font-size: 30px;
   text-align: center;
@@ -103,46 +117,131 @@ nav a:hover {
 }
 
 
-
-
-.pledgepage .page_stats, .pledgepage .campaign .donate_btn, .pledgepage .campaign p {
-  margin: 60px 0;
+.pledgepage .dashboard {
+  margin: 0;
+  position: relative;
 }
 
-.pledgepage .page_stats .stat {
-  float: left;
-  display: block;
-  text-align: center;
-  padding: 0 1em;
+.pledgepage .dashboard .stat {
   color: #FF5153;  /* red */
-  border-right: 1px solid #3752E9;  /* blue */
-  width: 33.3%;
-  height: 75px;
-}
-
-.pledgepage .page_stats .stat:last-child {
-  border-right: none;
-}
-
-.pledgepage .page_stats .stat h5 {
-  font-size: 30px;
-  font-weight: 700;
-}
-
-.pledgepage .page_stats .stat p {
-  line-height: 1em;
-}
-.pledgepage .campaign .donate_btn {
-  display: inline-block;
-  float: left;
-  width: 46%;
-  line-height: 65px;
   text-align: center;
+  z-index: 1; /* overlay thermometer */
+}
+
+.pledgepage .dashboard .stat {
+  border-top: 1px solid #3752E9;  /* blue */
+  padding: 1em 4px;  
+}
+.pledgepage .dashboard .stat:first-child {
+  border-top: 0;
+}
+
+@media (min-width: 480px) {
+  /* Extend 3-col layout down to 480px (btwn xs and sm) */
+  .pledgepage .dashboard-team .col-sm-4 {
+    float: left;
+    width: 33.33333333%;
+  }
+  .pledgepage .dashboard-campaign .col-sm-6 {
+    float: left;
+    width: 50%;
+  }
+  .pledgepage .dashboard .stat {
+    border-top: 0;
+    border-left: 1px solid #3752E9;  /* blue */
+    padding: 4px 1em;  
+  }
+  .pledgepage .dashboard .stat:first-child {
+    border-left: 0;
+  }
+}
+
+.pledgepage .dashboard .cta {
+  margin-top: 10px;
+  padding: 4px 1em;
+}
+
+@media (min-width: 480px) {
+  .pledgepage .dashboard .cta {
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .pledgepage .dashboard .cta {
+    margin-top: 0;
+    padding: 4px 1em 4px 0;
+  }
+}
+
+
+
+.pledgepage .dashboard .stat h5 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.pledgepage .dashboard .stat p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.pledgepage .dashboard .donate_btn {
+  display: block;
+  width: 100%;
   font-size: 30px;
+  line-height: 64px;
+  text-align: center;
   text-transform: uppercase;
   font-weight: 700;
   color: white;
   background-color: #3752E9;  /* blue */
+}
+
+.pledgepage .dashboard .cta p {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.pledgepage .dashboard .share_btn {
+  text-transform: uppercase;
+  color: #FF5153;  /* red */
+  display: block;
+  line-height: 48px;
+}
+
+.thermometer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.thermometer .mercury {
+  background: #eee;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+}
+
+.pledgepage .story {
+  margin: 20px 0;
+}
+
+@media (min-width: 992px) {
+  .pledgepage .story {
+    margin: 40px 0 60px;
+  }
+}
+
+
+.pledgepage .story .video-container {
+  margin: 0;
 }
 
 .pledgepage .campaign p {

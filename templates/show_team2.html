@@ -42,15 +42,21 @@
       });
 
       var reload = function() {
-        $.getJSON("{{pledge_root_url}}/r/total",
-                  {"team": "{{team.key()}}"})
-        .done(function(data) {
-          $("#team_total_dollars").text("$" + addCommas(
-              Math.round(data["teamTotalCents"]/100)));
-          $("#team_total_pledges").text("" + data["teamPledges"]);
+
+        var url = '{{pledge_root_url}}/r/total';
+        var req = $.getJSON(url, { team: '{{team.key()}}' });
+        
+        req.done(function(data) {
+
+          var teamTotalDollars = Math.round(data["teamTotalCents"]/100);
+
+          $(".team_total_dollars").text('$' + addCommas(teamTotalDollars));
+          $(".team_total_pledges").text("" + data["teamPledges"]);
+
           var total_dollars = Math.floor(data["totalCents"]/100);
           total_dollars = total_dollars - ALREADY_BANKED;
           var progress = Math.floor((total_dollars * 100) / GOAL_DOLLARS);
+
           $("#total_dollars").text("$" + addCommas(total_dollars));
           $("#goal_dollars").text("$" + addCommas(GOAL_DOLLARS));
           $("#progressbar-bar").width(progress + "%");
@@ -58,7 +64,7 @@
           $("#progressbar-text").text(progress + "% Complete");
         })
         .fail(function() {
-          $("#team_total_dollars").text("-");
+          $(".team_total_dollars").text("-");
           $("#team_total_pledges").text("-");
           $("#total_dollars").text("ERROR LOADING");
           $("#goal_dollars").text("");
@@ -85,10 +91,24 @@
         });
       };
 
+      // Days left.
+      var current_time = (new Date()).getTime();
+      var deadline_time = (new Date(new Date().getFullYear(),8,7)).getTime();
+      var one_day = (24*60*60*1000);
+      var remaining_time = deadline_time - current_time;
+      var days_left = Math.round(remaining_time / one_day) + 1;
+      $('.days_left').text(days_left);
+
       $("#pledger-list").hide();
       {% if edit_url %}
         update_pledgers();
       {% endif %}      
+
+      $('.share_btn').click(function(event) {
+        event.preventDefault();
+        $(this.hash).toggleClass('open');
+      });
+          
     });
   </script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
@@ -96,27 +116,63 @@
   <script src="https://checkout.stripe.com/checkout.js"></script>
 {% endblock %}
 {% block body %}
-  <div class="pledgepage" >
+  <div class="pledgepage">
     <div class="container">
+
       <div class="row">
-        <div id="pledgecol-main">
-          <div class="col-md-12">
-            <a class="share" href="#" onclick="$('.row.share').slideToggle();">Share</a>
-            <h2>{{team.title}}’s Pledge Page</h2>
-            <div class="row share">
-              <div class="col-sm-4 share-btn">
-	              <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
-	                <i class="fa fa-facebook-square"></i> Share
-                </a>
-              </div><!-- eo .share_btn -->
-              <div class="col-sm-4 share-btn">
-                <a href="https://twitter.com/intent/tweet?text={{
-  ("It's time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=" + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
-                  <i class="fa fa-twitter"></i> Tweet
-                </a>
-              </div><!-- eo .share_btn -->
-              <div class="col-sm-4 share-btn">
-                <a href="mailto:?to=&amp;subject={{"Lets help Lessig fix our democracy"|urlencode}}&amp;body={{("""Friend,
+        <div class="col-md-12">
+          <h2>{{team.title}}’s Pledge Page</h2>
+        </div>
+      </div>
+
+
+      <div class="row dashboard dashboard-team">
+        <div class="col-xs-12 col-md-9">
+          <div class="row stats">
+            <div class="col-sm-4 stat">
+              <h5 class="pledges team_total_pledges" id="team_total_pledges">&nbsp;</h5>
+              <p>Team Pledges</p>
+            </div>
+            <div class="col-sm-4 stat">
+              <h5 class="amount team_total_dollars" id="team_total_dollars">&nbsp;</h5>
+              <p>Team Donations</p>
+            </div>
+            {% if team.goal_dollars %}
+              <div class="col-sm-4 stat">
+                <h5>${{team.goal_dollars}}</h5>
+                <p>Team Goal</p>
+              </div>
+            {% else %}
+              <div class="col-sm-4 stat">
+                <h5 class="days_left" id="days_left">&nbsp;</h5>
+                <p>Days left</p>
+              </div>
+            {% endif %}
+          </div>
+          <!--<p class="campaign-total">Campaign total: <span id="total_dollars"></span></p>-->
+        </div>
+        <div class="col-xs-12 col-md-3 cta">
+          <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">Donate</a>
+          <p><a class="share_btn" href="#share-top">Share</a></p>
+        </div>
+        <!--<div class="col-xs-12 col-md-9 thermometer">
+          <div class="mercury" style="width:44.0%"></div>
+        </div>-->
+      </div><!-- eo .dashboard -->
+
+      <div class="row share" id="share-top">
+        <div class="col-sm-4 share-btn">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
+            <i class="fa fa-facebook-square"></i> Share
+          </a>
+        </div><!-- eo .share_btn -->
+        <div class="col-sm-4 share-btn">
+          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
+            <i class="fa fa-twitter"></i> Tweet
+          </a>
+        </div><!-- eo .share_btn -->
+        <div class="col-sm-4 share-btn">
+          <a href="mailto:?to=&amp;subject={{"Lets help Lessig fix our democracy"|urlencode}}&amp;body={{("""Friend,
 
 Money has corrupted our political process. Now what?
 
@@ -129,75 +185,85 @@ Please join me and other Americans who want to build a truly representative demo
 
 Thank you,
 """ + team.title)|urlencode}}" title="" target="_blank" style="background-color:#517fa4;">
-                  <i class="fa fa-envelope"></i> Email
-                </a>
-              </div><!-- eo .share_btn -->
-            </div><!-- eo .share.row -->
-            <div class="col-md-6">
-              <div class="video-container">
-                {% if not team.youtube_id and not team.image_url %}
-                  <iframe src="//www.youtube.com/embed/rzJXGCNaeTc" width="420"
-                      height="236" frameborder="0" webkitallowfullscreen
-                      mozallowfullscreen allowfullscreen></iframe>
-                {% elif team.youtube_id %}
-                  <iframe src="//www.youtube.com/embed/{{team.youtube_id}}"
-                      frameborder="0" allowfullscreen width="420"></iframe>
-                {% elif team.image_url %}
-                  <img src="{{team.image_url}}" />
-                {% endif %}
-              </div><!-- eo .video-container -->
-            </div><!-- eo .col-md-6 -->
-            <div class="short-message">
-            {{description_rendered|safe}}
-            </div><!-- eo .short-message -->
+            <i class="fa fa-envelope"></i> Email
+          </a>
+        </div><!-- eo .share_btn -->
+      </div><!-- eo .share.row -->
 
+      <div class="row story">
+        <div class="col-md-6">
+          <div class="video-container">
+            {% if not team.youtube_id and not team.image_url %}
+              <iframe src="//www.youtube.com/embed/rzJXGCNaeTc" width="420"
+                  height="236" frameborder="0" webkitallowfullscreen
+                  mozallowfullscreen allowfullscreen></iframe>
+            {% elif team.youtube_id %}
+              <iframe src="//www.youtube.com/embed/{{team.youtube_id}}"
+                  frameborder="0" allowfullscreen width="420"></iframe>
+            {% elif team.image_url %}
+              <img src="{{team.image_url}}" />
+            {% endif %}
+          </div><!-- eo .video-container -->
+        </div><!-- eo .col-md-6 -->
+        <div class="col-md-6">
+          <div class="short-message">
+          {{description_rendered|safe}}
+          </div><!-- eo .short-message -->
+        </div>
+      </div>
+
+
+      <div class="row dashboard dashboard-campaign">
+        <div class="col-xs-12 col-md-9">
+          <div class="row stats">
+            <div class="col-sm-6 stat">
+              <h5 class="amount total_dollars" id="total_dollars">&nbsp;</h5>
+              <p>Total Donations</p>
+            </div>
+            <div class="col-sm-6 stat">
+              <h5 class="days_left" id="days_left">&nbsp;</h5>
+              <p>Days left</p>
+            </div>
           </div>
         </div>
+        <div class="col-xs-12 col-md-3 cta">
+          <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">Donate</a>
+          <p><a class="share_btn" href="#share-bottom">Share</a></p>
+        </div>
+        <!--<div class="col-xs-12 col-md-9 thermometer">
+          <div class="mercury" style="width:44.0%"></div>
+        </div>-->
+      </div>
 
-        <div class="col-md-12 stat_bar">
-          <div class="page_stats col-md-6">
-            {#
-            <h6>PEOPLE WHO JOINED</h6>
-            <h5 class="amount" id="team_total_people_joined">{{team.total_people_joined}}</h5>
-            #}
+      <div class="row share" id="share-bottom">
+        <div class="col-sm-4 share-btn">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
+            <i class="fa fa-facebook-square"></i> Share
+          </a>
+        </div><!-- eo .share_btn -->
+        <div class="col-sm-4 share-btn">
+          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
+            <i class="fa fa-twitter"></i> Tweet
+          </a>
+        </div><!-- eo .share_btn -->
+        <div class="col-sm-4 share-btn">
+          <a href="mailto:?to=&amp;subject={{"Lets help Lessig fix our democracy"|urlencode}}&amp;body={{("""Friend,
 
-            <div class="stat">
-              <h5 class="amount" id="team_total_dollars"></h5>
-              <p>Donated via this page</p>
-            </div><!-- eo .stat -->
-            <div class="stat">
-              <h5 class="pledges" id="team_total_pledges"></h5>
-              <p>Pledges</p>
-            </div><!-- eo .stat -->
-            <div class="stat">
-              <h5 id="days_left">
-                <script>
-                  var current_time = (new Date()).getTime();
-                  var deadline_time = (new Date(new Date().getFullYear(),8,7)).getTime();
-                  var one_day = (24*60*60*1000);
-                  var remaining_time = deadline_time - current_time;
-                  var days_left = Math.round(remaining_time / one_day) + 1;
-                  document.write(days_left);
-                </script>
-              </h5>
-              <p>Days left</p>
-            </div><!-- eo .stat -->
-          </div><!-- eo .page_stats -->
-          <div class="campaign col-md-6">
-            <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">
-              Donate
-            </a>
-            <p>
-              Campaign totals:<br>
-              <strong>
-                <span id="campaign_pledges"></span> Pledges<br>
-                <span id="total_dollars"></span> Total
-              </strong>
-            </p>
-          </div><!-- eo .campaign -->
-        </div><!-- eo .stat_bar -->
-      </div><!-- eo .row -->
+Money has corrupted our political process. Now what?
 
+We need an upgrade.
+
+Visit my page supporting Lessig for president to fix government for all of us:
+https://lessigforpresident.com/take-action/recruit/?team=""" + team.primary_slug + """
+
+Please join me and other Americans who want to build a truly representative democracy.
+
+Thank you,
+""" + team.title)|urlencode}}" title="" target="_blank" style="background-color:#517fa4;">
+            <i class="fa fa-envelope"></i> Email
+          </a>
+        </div><!-- eo .share_btn -->
+      </div><!-- eo .share.row -->
     </div><!-- eo .container -->
     <div class="start-campaign-cta">
       <div class="container">
