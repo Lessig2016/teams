@@ -207,7 +207,7 @@ class TeamHandler2(TeamBaseHandler):
       thank_url = None
     self.render_template(
         "show_team2.html", team=team, edit_url=edit_url, thank_url=thank_url,
-        description_rendered=markdown.markdown(
+        is_admin=is_admin, description_rendered=markdown.markdown(
             jinja2.escape(team.description)))
 
 class ShareTeamHandler(TeamBaseHandler):

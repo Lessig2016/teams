@@ -20,3 +20,12 @@ Please see https://github.com/MayOneUS/wiki/wiki/My-SuperPAC-design-doc.
    will need to for testing submission of forms and other things, run this app on a separate port other than the
    default 8080 to avoid port collisions. This can done by running
    `dev_appserver.py --port SOME_OTHER_FREE_PORT_LIKE_8081 .`.
+
+## Deploy
+1. Uncomment the following two lines in config_NOCOMMIT.py
+```
+## For production.
+auth_service = ProdAuthService("https://auth.lessigforpresident.com")
+pledge_service = ProdPledgeService(PLEDGE_SERVICE_URL)
+```
+2. Run `appcfg.py update .` in the root directory of the repo.
