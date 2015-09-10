@@ -35,8 +35,8 @@ PREVIOUS_PLEDGE_DESC = DEFAULT_DESC + u"""\
 
 class BaseHandler(webapp2.RequestHandler):
   def dispatch(self, *args, **kwargs):
-    if self.request.host == "lessigforpresident.com" and self.request.method == "GET":
-      self.request.host = "team.lessigforpresident.com"
+    if self.request.host == "lessig2016.us" and self.request.method == "GET":
+      self.request.host = "team.lessig2016.us"
       return self.redirect(self.request.url)
     return webapp2.RequestHandler.dispatch(self, *args, **kwargs)
 
@@ -216,7 +216,7 @@ class ShareTeamHandler(TeamBaseHandler):
     if team is None:
       return
     else:
-      team_url = "https://team.lessigforpresident.com/t/" + team.primary_slug
+      team_url = "https://team.lessig2016.us/t/" + team.primary_slug
       self.render_template(
           "share_team.html", team=team, team_url=team_url)
 

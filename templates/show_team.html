@@ -3,7 +3,7 @@
 {% extends "includes/base.html" %}
 {% block head %}
   <!-- for facebook sharing -->
-  <meta property="og:image" content="https://lessigforpresident.com/wp-content/uploads/2015/08/facebook-og-image.jpg"/>
+  <meta property="og:image" content="https://lessig2016.us/wp-content/uploads/2015/08/facebook-og-image.jpg"/>
   <meta property="og:title" content="{{team.title|escape}}'s pledge page"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Lessig2016Teams"/>
@@ -29,7 +29,7 @@
       date.setTime(date.getTime()+(24*60*60*1000));
       document.cookie = ("last_team_key={{team.key()}};" +
                          "expires=" + date.toGMTString() +
-                         ";domain=.lessigforpresident.com;path=/");
+                         ";domain=.lessig2016.us;path=/");
 
       var reload = function() {
         $.getJSON("https://pledge.lessigforpresident/r/total",
@@ -58,7 +58,7 @@
       setInterval(reload, 15000);
 
       var update_pledgers = function() {
-        $.getJSON("https://pledge.lessigforpresident.com/r/pledgers",
+        $.getJSON("https://pledge.lessig2016.us/r/pledgers",
                   {"team": "{{team.key()}}"})
         .done(function(data) {
           if (data["pledgers"].length == 0) {

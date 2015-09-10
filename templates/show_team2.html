@@ -3,10 +3,10 @@
 {% extends "includes/base.html" %}
 {% block head %}
   <!-- for facebook sharing -->
-  <meta property="og:image" content="https://lessigforpresident.com/wp-content/uploads/2015/08/facebook-og-image.jpg"/>
+  <meta property="og:image" content="https://lessig2016.us/wp-content/uploads/2015/08/facebook-og-image.jpg"/>
   <meta property="og:title" content="{{team.title|escape}}'s pledge page"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://team.lessigforpresident.com/t/{{team.primary_slug}}"/>
+  <meta property="og:url" content="https://team.lessig2016.us/t/{{team.primary_slug}}"/>
   <meta property="og:site_name" content="Lessig2016Teams"/>
   <meta property="og:description"
         content="Our government doesn't represent us because the system is rigged. Lets help Lessig fix it."/>
@@ -30,7 +30,7 @@
       date.setTime(date.getTime()+(24*60*60*1000));
       document.cookie = ("last_team_key={{team.key()}};" +
                          "expires=" + date.toGMTString() +
-                         ";domain=.lessigforpresident.com;path=/");
+                         ";domain=.lessig2016.us;path=/");
     }
     var ALREADY_BANKED = 0;
     var GOAL_DOLLARS = 1000000;
@@ -75,7 +75,7 @@
       // setInterval(reload, 15000);
       
       var update_pledgers = function() {
-        $.getJSON("https://pledge.lessigforpresident.com/r/pledgers",
+        $.getJSON("https://pledge.lessig2016.us/r/pledgers",
                   {"team": "{{team.key()}}"})
         .done(function(data) {
           if (data["pledgers"].length == 0) {
@@ -152,7 +152,7 @@
           <!--<p class="campaign-total">Campaign total: <span id="total_dollars"></span></p>-->
         </div>
         <div class="col-xs-12 col-md-3 cta">
-          <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">Donate</a>
+          <a class="donate_btn" href="https://lessig2016.us/donate/?team={{team.key()}}" target="_top">Donate</a>
           <p><a class="share_btn" href="#share-top">Share</a></p>
         </div>
         <!--<div class="col-xs-12 col-md-9 thermometer">
@@ -162,12 +162,12 @@
 
       <div class="row share{% if is_admin %} open{% endif %}" id="share-top">
         <div class="col-sm-4 share-btn">
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessig2016.us/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
             <i class="fa fa-facebook-square"></i> Share
           </a>
         </div><!-- eo .share_btn -->
         <div class="col-sm-4 share-btn">
-          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
+          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessig2016.us/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
             <i class="fa fa-twitter"></i> Tweet
           </a>
         </div><!-- eo .share_btn -->
@@ -179,7 +179,7 @@ Money has corrupted our political process. Now what?
 We need an upgrade.
 
 Visit my page supporting Lessig for president to fix government for all of us:
-https://lessigforpresident.com/take-action/recruit/?team=""" + team.primary_slug + """
+https://lessig2016.us/take-action/recruit/?team=""" + team.primary_slug + """
 
 Please join me and other Americans who want to build a truly representative democracy.
 
@@ -227,7 +227,7 @@ Thank you,
           </div>
         </div>
         <div class="col-xs-12 col-md-3 cta">
-          <a class="donate_btn" href="https://lessigforpresident.com/donate/?team={{team.key()}}" target="_top">Donate</a>
+          <a class="donate_btn" href="https://lessig2016.us/donate/?team={{team.key()}}" target="_top">Donate</a>
           <p><a class="share_btn" href="#share-bottom">Share</a></p>
         </div>
         <!--<div class="col-xs-12 col-md-9 thermometer">
@@ -237,12 +237,12 @@ Thank you,
 
       <div class="row share" id="share-bottom">
         <div class="col-sm-4 share-btn">
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{('https://lessig2016.us/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#3b5998;">
             <i class="fa fa-facebook-square"></i> Share
           </a>
         </div><!-- eo .share_btn -->
         <div class="col-sm-4 share-btn">
-          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessigforpresident.com/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
+          <a href="https://twitter.com/intent/tweet?text={{('It\'s time to think BIG. We must fix democracy FIRST. Join me and @lessig in the fight for citizen equality at https://lessig2016.us/take-action/recruit/?team=' + team.primary_slug) | urlencode }}" title="" target="_blank" style="background-color:#00aced;">
             <i class="fa fa-twitter"></i> Tweet
           </a>
         </div><!-- eo .share_btn -->
@@ -254,7 +254,7 @@ Money has corrupted our political process. Now what?
 We need an upgrade.
 
 Visit my page supporting Lessig for president to fix government for all of us:
-https://lessigforpresident.com/take-action/recruit/?team=""" + team.primary_slug + """
+https://lessig2016.us/take-action/recruit/?team=""" + team.primary_slug + """
 
 Please join me and other Americans who want to build a truly representative democracy.
 

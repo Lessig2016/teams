@@ -1,6 +1,6 @@
 # teams
 
-The backend app that powers [team.lessigforpresident.com](https://team.lessigforpresident.com)
+The backend app that powers [team.lessig2016.us](https://team.lessig2016.us)
 
 Report improvements/bugs at https://github.com/inmomentsoftware/teams/issues.
 
@@ -25,7 +25,7 @@ Please see https://github.com/MayOneUS/wiki/wiki/My-SuperPAC-design-doc.
 1. Uncomment the following two lines in config_NOCOMMIT.py
 ```
 ## For production.
-auth_service = ProdAuthService("https://auth.lessigforpresident.com")
+auth_service = ProdAuthService("https://auth.lessig2016.us")
 pledge_service = ProdPledgeService(PLEDGE_SERVICE_URL)
 ```
 2. Run `appcfg.py update .` in the root directory of the repo.
