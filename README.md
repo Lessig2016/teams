@@ -51,7 +51,7 @@ You are responsible for your compliance with federal campaign finance laws. You 
 
 The campaign may remove any offensive, abusive, attacking, or discriminatory content, as well as any content that may otherwise violate our [Terms of Service](https://lessig2016.us/terms-of-service/). 
 
-## Copyright and license
+## Copyright and License
 
 Copyright 2015 Lessig Equal Citizens Exploratory Committee. This 
 project is released under [GNU General Public License, version 3](https://github.com/Lessig2016/teams/blob/master/LICENSE).
