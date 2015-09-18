@@ -2,8 +2,11 @@
 
 The backend app that powers [team.lessig2016.us](https://team.lessig2016.us)
 
-Report improvements/bugs at https://github.com/inmomentsoftware/teams/issues.
+## tl;dr
 
+* **Applicable skills** TBD
+* **Slack** [#gh-teams](https://teamlessigtech.slack.com/messages/gh-teams/)
+* **Project lead** TBD
 
 ## Design Docs
 
